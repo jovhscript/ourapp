@@ -22,7 +22,7 @@ mkdir envs
 
 # use the AWS EC2 Ubuntu 16.04 instance python3 installation
 virtualenv --python=/usr/bin/python3 envs/flaskproj
-source ~/envs/flaskproj/bin/activate
+# source ~/envs/flaskproj/bin/activate
 
 # install PostgreSQL
 printf "\n*******************************************************"
@@ -33,7 +33,9 @@ sudo apt-get install libpq-dev
 sudo apt-get install postgresql-contrib
 echo "PostgreSQL installed"
 
-source /home/ubuntu/envs/flaskproj/bin/activate && pip install -r 
+source /home/ubuntu/envs/flaskproj/bin/activate && pip install -r /home/ubuntu/ourapp/setup/Requirements.txt
+
+printf "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 
 # install and configure nginx
 printf "\n*******************************************************"
