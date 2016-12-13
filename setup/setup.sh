@@ -59,6 +59,6 @@ alter user postgres password 'password';
 create user cs207 createdb createuser password 'cs207password';
 create database ts_postgres owner cs207;
 HERE
-source ~/envs/flaskproj/bin/activate  && python store_gen_ts.py
+source ~/envs/flaskproj/bin/activate  && python ~/ourapp/setup/store_gen_ts.py
 
 printf "\nFINISHED!\n"
