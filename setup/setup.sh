@@ -64,16 +64,9 @@ printf "\nInstalling and starting nginx ...\n"
 sudo apt-get install nginx
 sudo service nginx start
 
-printf "\nConfiguring firewall for nginx HTTP access ...\n"
-sudo ufw app list # show current firewall settings
-sudo ufw allow 'Nginx HTTP' # allow nginx to use HTTP port
-printf "\nAfter configuring firewall for nginx HTTP access ...\n"
-sudo ufw status
-
-
-sudo cp ~/ourproject/setup/ourapp.service /etc/systemd/system/ourproject.service
-sudo systemctl start ourproject
-sudo systemctl enable ourproject
+sudo cp ~/ourproject/setup/ourapp.service /etc/systemd/system/ourapp.service
+sudo systemctl start ourapp
+sudo systemctl enable ourapp
 
 sudo cp  ~/ourproject/setup/ourapp /etc/nginx/sites-available/ourapp
 sudo ln -s /etc/nginx/sites-available/ourapp /etc/nginx/sites-enabled
@@ -84,11 +77,11 @@ echo "nginx installed and configured \n"
 
 printf "\n*******************************************************"
 printf "\nInitialising the postgress database ...\n"
-sudo -u postgres psql
+sudo -u postgres -- psql -f - <<HERE
 alter user postgres password 'password';
 create user cs207 createdb createuser password 'cs207password';
 create database ts_postgres owner cs207;
-\q
+HERE
 python store_gen_ts.py
 
 printf "\nFINISHED!\n"

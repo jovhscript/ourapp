@@ -1,6 +1,7 @@
 import os, sys
 import pickle
-sys.path.append("../")
+sys.path.append(
+    os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir))+'/timeseries')
 from interfaces import SizedContainerTimeSeriesInterface as sized_ts
 from series import SMTimeSeries
 import numpy as np
