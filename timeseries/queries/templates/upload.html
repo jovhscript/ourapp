@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+	<title>UPLOAD SEARCH</title>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+          rel="stylesheet">
+	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">	  
+	<script type=text/javascript src= "{{ url_for('static',filename='js/upload.js') }}"></script>
+
+	<body>
+		<div style="display: inline-block">
+		<img style="float: left" src="{{ url_for('static',filename='img/harvard2.png') }}"/>
+			<h1 style="display: inline-block">CS207 Project: TimeSeries Analysis</h1><br>
+			<h4 style="display: inline-block">Team jovhscript: Jack Qian, Omar Abboud, Virgile Audi, & Heidi Chen</h2>
+		</div>
+		<center>
+		<h3>Search by File </h1>
+		<p>
+		Please choose the Timeseries you which to find similar ones to as a JSON file:
+		<br>
+		<form action="/search_upload/results" method="post" enctype = "multipart/form-data">
+  			<input style="display: inline-block" class="file" type="file" name="ts">
+  			<input style="display: inline-block" class="upload" type="submit" value= "Upload">
+		</form>
+		</p>
+		<br>
+		<span>{{output}}</span>
+		<br>
+		<br>
+		<br>
+		<button class="button"><a href="/" id="homebutton">Back Home</a></button>
+		</center>
+    </body>
+</html>

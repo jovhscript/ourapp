@@ -1,0 +1,10 @@
+server {
+    listen 80;
+    server_name TOBECHANGED;
+
+    location / {
+        include uwsgi_params;
+        uwsgi_pass unix:/home/ubuntu/ourapp/timeseries/queries/ourapp.sock;
+    }
+
+}

@@ -1,0 +1,13 @@
+[Unit]
+Description=uWSGI instance to serve myapp
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/ourapp/timeseries/queries
+Environment="PATH=/home/ubuntu/envs/flaskproject/bin"
+ExecStart=/home/ubuntu/envs/flaskproject/bin/uwsgi --ini ourapp.ini
+
+[Install]
+WantedBy=multi-user.target
