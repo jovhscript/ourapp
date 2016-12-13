@@ -33,7 +33,7 @@ sudo apt-get install libpq-dev
 sudo apt-get install postgresql-contrib
 echo "PostgreSQL installed"
 
-source ~/envs/flaskproj/bin/activate && pip install -r 
+source /home/ubuntu/envs/flaskproj/bin/activate && pip install -r 
 
 # install and configure nginx
 printf "\n*******************************************************"
@@ -41,11 +41,11 @@ printf "\nInstalling and starting nginx ...\n"
 sudo apt-get install nginx
 sudo service nginx start
 
-sudo cp ~/ourproject/setup/ourapp.service /etc/systemd/system/ourapp.service
+sudo cp /home/ubuntu/ourproject/setup/ourapp.service /etc/systemd/system/ourapp.service
 sudo systemctl start ourapp
 sudo systemctl enable ourapp
 
-sudo cp  ~/ourproject/setup/ourapp /etc/nginx/sites-available/ourapp
+sudo cp  /home/ubuntu/ourproject/setup/ourapp /etc/nginx/sites-available/ourapp
 sudo ln -s /etc/nginx/sites-available/ourapp /etc/nginx/sites-enabled
 
 sudo nginx -t
@@ -59,6 +59,6 @@ alter user postgres password 'password';
 create user cs207 createdb createuser password 'cs207password';
 create database ts_postgres owner cs207;
 HERE
-source ~/envs/flaskproj/bin/activate  && python ~/ourapp/setup/store_gen_ts.py
+source /home/ubuntu/envs/envs/flaskproj/bin/activate  && python /home/ubuntu/ourapp/setup/store_gen_ts.py
 
 printf "\nFINISHED!\n"
