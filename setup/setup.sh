@@ -33,7 +33,7 @@ sudo apt-get install libpq-dev
 sudo apt-get install postgresql-contrib
 echo "PostgreSQL installed"
 
-source /home/ubuntu/envs/flaskproj/bin/activate && pip install -r /home/ubuntu/ourapp/setup/Requirements.txt
+source ~/envs/flaskproj/bin/activate && pip install -r ~/ourapp/setup/Requirements.txt
 
 printf "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 
