@@ -21,8 +21,8 @@ cd ~
 mkdir envs
 
 # use the AWS EC2 Ubuntu 16.04 instance python3 installation
-virtualenv --python=/usr/bin/python3 venvs/flaskproj
-source ~/venvs/flaskproj/bin/activate
+virtualenv --python=/usr/bin/python3 envs/flaskproj
+source ~/envs/flaskproj/bin/activate
 
 # install PostgreSQL
 printf "\n*******************************************************"
@@ -71,15 +71,24 @@ printf "\nAfter configuring firewall for nginx HTTP access ...\n"
 sudo ufw status
 
 
-sudo cp ourapp.service /etc/systemd/system/ourproject.service
+sudo cp ~/ourproject/setup/ourapp.service /etc/systemd/system/ourproject.service
 sudo systemctl start ourproject
 sudo systemctl enable ourproject
 
-sudo cp  ourapp /etc/nginx/sites-available/ourapp
+sudo cp  ~/ourproject/setup/ourapp /etc/nginx/sites-available/ourapp
 sudo ln -s /etc/nginx/sites-available/ourapp /etc/nginx/sites-enabled
 
 sudo nginx -t
 sudo systemctl restart nginx
 echo "nginx installed and configured \n"
+
+printf "\n*******************************************************"
+printf "\nInitialising the postgress database ...\n"
+sudo -u postgres psql
+alter user postgres password 'password';
+create user cs207 createdb createuser password 'cs207password';
+create database ts_postgres owner cs207;
+\q
+python store_gen_ts.py
 
 printf "\nFINISHED!\n"

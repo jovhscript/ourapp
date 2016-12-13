@@ -37,7 +37,7 @@ def storeGenTS(engine):
 
     print("storing imeseries into StorageManager...")
     for filename in ts_names:
-        with open("GeneratedTimeseries/"+filename, 'rb') as f:
+        with open("../timeseries/queries/GeneratedTimeseries/"+filename, 'rb') as f:
             ts_content = pickle.load(f)
             ids.append(filename[10:])
             blargs.append(np.random.uniform())
