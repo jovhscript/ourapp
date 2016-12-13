@@ -33,30 +33,7 @@ sudo apt-get install libpq-dev
 sudo apt-get install postgresql-contrib
 echo "PostgreSQL installed"
 
-printf "\n*******************************************************"
-printf "\nUpgrading pip ...\n"
-pip install --upgrade pip
-
-# install numpy for Python3
-printf "\n*******************************************************"
-printf "\nInstalling numpy ...\n"
-pip install numpy
-
-# install pandas for Python3
-printf "\n*******************************************************"
-printf "\nInstalling numpy ...\n"
-# added by Jack to install pandas
-pip install pandas
-
-printf "\n*******************************************************"
-printf "\nInstalling Flask and SQL Alchemy ...\n"
-# install flask and SQLAlchemy for Python3
-pip install flask Flask-SQLAlchemy sqlalchemy
-
-printf "\n*******************************************************"
-printf "\nInstalling Testing modules...\n"
-
-pip install pytest
+source ~/envs/flaskproj/bin/activate && pip install -r 
 
 # install and configure nginx
 printf "\n*******************************************************"
@@ -82,6 +59,6 @@ alter user postgres password 'password';
 create user cs207 createdb createuser password 'cs207password';
 create database ts_postgres owner cs207;
 HERE
-python store_gen_ts.py
+source ~/envs/flaskproj/bin/activate  && python store_gen_ts.py
 
 printf "\nFINISHED!\n"
