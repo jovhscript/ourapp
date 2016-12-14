@@ -56,3 +56,6 @@ HERE
 ##Step 9: Launch the server
 1. cd ~/ourapp/timeseries/queries
 2. nohup python server.py &
+
+#PS: 
+You might need to fix some permission issues that we still encounter sometimes as well as restart the instance.
